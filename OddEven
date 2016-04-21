@@ -1,0 +1,75 @@
+import java.util.Scanner;
+public class Player
+{
+	public boolean isHuman;
+	public int score =0;
+	private Scanner input;
+	public Player(int human)
+	{
+		if(human > 0)
+		isHuman=true;
+		else
+		isHuman=false;
+		}
+	public void play()
+	{
+		if(isHuman)
+			playHuman();
+		else
+			playComp();
+		}
+	public void playHuman()
+	{
+		input =new Scanner(System.in);
+		int current = 0;
+		int again =1;
+		while (again==1)
+		{
+			System.out.println("Enter a 1 or 2 for your throw");
+			current = input.nextInt();
+			int value = (int) Math.random() * 3;
+			score = (current + value);
+			if(score % 2==0)
+			{
+				    System.out.println("You Win!");
+            }
+			else
+			{
+				    System.out.println("Sorry, you lose.");
+            }
+		}
+	}
+	public void playComp()
+	{
+		int current =0;
+		int payment =0;
+		int value = (int) Math.random() * 5;
+		score = (current + value);
+	}
+}
+public class Game 
+{
+	private Player p1; 			
+	private Player p2;		
+	Scanner scan = new Scanner(System.in);
+	public Game()
+	{
+		p1 = new Player(1);
+		p2 = new Player(0);
+	}
+	public void play()
+	{
+		p1.play();
+		p2.play();
+	}
+}
+public class TestGame 
+{
+	public static void main(String[] args) 
+	{
+	    System.out.println("Welcome to the game of Odds or Evens");
+	    Game g = new Game();
+	    g.play();
+	    System.out.println("Thanks for playing");
+	}  
+} 
